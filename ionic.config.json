@@ -1,0 +1,7 @@
+{
+  "name": "project_management",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
