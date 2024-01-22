@@ -1,3 +1,22 @@
-<p>
-  employee-catalog works!
-</p>
+<!-- personal-modal.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Seleccionar Personal
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let persona of personas">
+      <ion-label>{{ persona.nombre }}</ion-label>
+      <ion-checkbox [(ngModel)]="persona.selected"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="agregarPersonal()">Agregar</ion-button>
+</ion-content>

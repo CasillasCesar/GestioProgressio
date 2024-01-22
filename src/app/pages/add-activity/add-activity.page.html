@@ -9,19 +9,19 @@
               <ion-item lines="none">
                 <ion-label>
                   <b style="height: 3em;">
-                    Nombre del Proyecto
+                    {{proyecto.nombre}}
                   </b>
                 </ion-label>
                 <ion-label slot="end">
                   <ion-row class="ion-justify-content-end">
                     <ion-item lines="none">
                       <ion-label>
-                        Start Date: 02-01-2024
+                        Start Date: {{proyecto.fechainicio | date:'dd-MM-yyyy' }}
                       </ion-label>
                     </ion-item>
                     <ion-item lines="none">
                       <ion-label>
-                        End Date: 01-02-2025
+                        End Date: {{proyecto.fechafin | date:'dd-MM-yyyy' }}
                       </ion-label>
                     </ion-item>
                   </ion-row>
@@ -39,16 +39,114 @@
             </ion-row>
             <ion-row>
               <ion-col size="12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra, dolor nec sagittis porttitor, neque sem dignissim lectus, non aliquet diam purus a enim. Mauris auctor sem tristique turpis volutpat dignissim. Maecenas tempus iaculis ante, a consectetur neque elementum a. Nam gravida lectus eget molestie aliquet. Aliquam vel elementum urna, at sagittis leo. Vestibulum lacinia metus mi. Nam vel est urna. Nulla lacinia ut ligula id imperdiet. In efficitur velit eu nisl porta, et dapibus nibh scelerisque. Praesent gravida vitae tellus sit amet commodo. Maecenas ornare, nisl et egestas aliquet, felis dui porta diam, quis lobortis dolor ipsum quis ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce non imperdiet dui. 
+                {{proyecto.descripcion}}
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col size="12" style="text-align: right;">
-                Anonimous Anonimous
+                {{proyecto.nombreencargado}}
               </ion-col>
             </ion-row>
           </ion-card-content>
         </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3">
+        <form (ngSubmit)="onSubmit()" #formulario="ngForm">
+          <ion-item>
+            <ion-label position="stacked">Nombre de la Actividad</ion-label>
+            <ion-input type="text" name="nombreActividad" [(ngModel)]="actividad.nombreActividad" required></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="stacked">Fecha de Inicio</ion-label>
+            <ion-input type="date" name="fechaInicio" [(ngModel)]="actividad.fechaInicio" [min]="formatearFecha(proyecto.fechainicio)" [max]="actividad.fechaFin ? actividad.fechaFin : formatearFecha(proyecto.fechafin)" required></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="stacked">Fecha de Fin</ion-label>
+            <ion-input type="date" name="fechaFin" [(ngModel)]="actividad.fechaFin" [min]="actividad.fechaInicio ? actividad.fechaInicio : formatearFecha(proyecto.fechainicio) " [max]="formatearFecha(proyecto.fechafin)" required></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="stacked">Personal Asignado</ion-label>
+            <!-- Utiliza ion-chip para mostrar el personal asignado -->
+            <ion-chip *ngFor="let persona of actividad.personalAsignado">
+              {{ persona.nombre }}
+              <ion-icon name="close" (click)="removePersonal(persona)"></ion-icon>
+            </ion-chip>
+            <ion-button expand="full" (click)="openPersonalModal()">Agregar Personal</ion-button>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-textarea name="descripcion" [(ngModel)]="actividad.descripcion" required></ion-textarea>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>¿Hay Sub-Actividades?</ion-label>
+            <ion-checkbox name="areSubActividades" [(ngModel)]="actividad.areSubActividades"></ion-checkbox>
+          </ion-item>
+      
+          <ion-item *ngIf="actividad.areSubActividades">
+            <ion-label position="stacked">Sub-Actividades</ion-label>
+            <!-- Utiliza ion-chip para mostrar las sub-actividades -->
+            <ion-chip *ngFor="let subActividad of actividad.subActividades">
+              {{ subActividad.nombre }}
+              <ion-icon name="close" (click)="removeSubActividad(subActividad)"></ion-icon>
+            </ion-chip>
+            <ion-button expand="full" [disabled]="!actividad.fechaFin || !actividad.fechaInicio || (actividad.personalAsignado.length == 0)" (click)="openSubActividadModal()">Agregar Sub-Actividad</ion-button>
+          </ion-item>
+          
+          <ion-item *ngIf="!actividad.areSubActividades">
+            <ion-label position="stacked">Recursos</ion-label>
+            <!-- Utiliza ion-chip para mostrar los recursos seleccionados -->
+            <ion-chip *ngFor="let recurso of actividad.recursos">
+              {{ recurso.nombre }}
+              <ion-icon name="close" (click)="removeRecurso(recurso)"></ion-icon>
+            </ion-chip>
+            <ion-button expand="full" (click)="openRecursoModal()">Agregar Recursos</ion-button>
+          </ion-item>
+      
+          <ion-button (click)="sendData()" expand="full" [disabled]="!formulario.valid">Enviar</ion-button>
+        </form>
+      </ion-col>
+      <ion-col>
+        <ion-content>
+          <ion-button color="success" (click)="saveData()" [disabled]="actividades.length <= 0" expand="block">
+            Save All Activities
+          </ion-button>
+          <ion-card *ngFor="let actividad of actividades">
+            <ion-card-header>
+              <ion-item>
+                <ion-label>
+                  {{ actividad.nombreActividad }}
+                </ion-label>
+                <ion-icon name="logo-ionic" slot="end" (click)="removeActividad(actividad)" style="cursor: pointer;"></ion-icon> 
+              </ion-item>
+            </ion-card-header>
+        
+            <ion-card-content>
+              <p>Fecha de inicio: {{ actividad.fechaInicio }}</p>
+              <p>Fecha de fin: {{ actividad.fechaFin }}</p>
+              <p>Descripción: {{ actividad.descripcion }}</p>
+        
+              <ion-list>
+                <ion-item *ngFor="let personal of actividad.personalAsignado">
+                  {{ personal.nombre }} - {{ personal.email }}
+                </ion-item>
+              </ion-list>
+        
+              <ion-list *ngIf="actividad.areSubActividades">
+                <ion-item *ngFor="let subActividad of actividad.subActividades">
+                  {{ subActividad.nombre }} - {{ subActividad.fechaInicio }} to {{ subActividad.fechaFin }}
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+        
       </ion-col>
     </ion-row>
   </ion-grid>
