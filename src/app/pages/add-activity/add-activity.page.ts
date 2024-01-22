@@ -192,6 +192,7 @@ export class AddActivityPage implements OnInit {
 
   // saveData(){
   //   console.log(this.actividades);
+  //   this.dataService.sendMails(this.actividades)
   // }
 
   async saveData(){

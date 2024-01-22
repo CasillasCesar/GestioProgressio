@@ -71,6 +71,11 @@ export class DataService {
     return this.http.post(url,data)
   }
 
+  sendMails(data:any){
+    const url = `${this.apiUrl}/sendMsj`;
+    return this.http.post(url,data)
+  }
+
   getSelectedProject() : Proyecto{
     return this.proyectSelected;
   }
