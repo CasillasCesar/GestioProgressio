@@ -9,50 +9,43 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./project-catalog.page.scss'],
 })
 export class ProjectCatalogPage implements OnInit {
-  constructor(private dataService : DataService, private router : Router) { }
 
-  proyectos : Proyecto[]= [] as Proyecto[];
-  filtrados : Proyecto[]= [] as Proyecto[];
+  
+  public user: any;
+  public campo!: string;
 
-  ngOnInit() {
-    this.dataService.getProjects().subscribe(
-      (data:any)=>{
-        // console.log(data);
-        this.proyectos = data.data;
-        console.log(this.proyectos);
-        
-      },
-      (error:any)=>{
-        console.log(error);
-      },
-      ()=>{
-        this.filtrados = [...this.proyectos]
-      })
-  }
 
-  onSearchChange(event:any){
-    console.log(event);
-    
-    let filtro = event.detail.value.toLowerCase();
-    if(filtro && filtro != ''){
-      this.filtrados = this.proyectos.filter(proyecto=>{
-        const nombre = proyecto.nombre.toLowerCase();
-        const encargado = proyecto.nombreencargado.toLowerCase();
-        return(
-          nombre.includes(filtro) || encargado.includes(filtro)
-        );
-      })
-    }else{
-      console.log('salio');
-      this.filtrados=[...this.proyectos]
+  constructor(private dataService : DataService, private router : Router) { 
+    this.user = {
+      nombre: '',
+      responsable: '',
+      biografia: '',
+      genero: ''
     }
   }
 
-  move(proyecto : Proyecto){
-    this.dataService.setProyecto(proyecto);
-    this.router.navigate(["/add-activity"])
+
+
+  ngOnInit() {
+
   }
 
+  onSubmit(){
+    alert("Enviado");
+    console.log(this.user);
+  }
+
+  esClic(){
+    alert("Has dado clic");
+  }
+
+  hasSalido(){
+    alert("Has salido");
+  }
+
+  pressBoton(){
+    alert("Has pulsado enter");
+  }
 
 
 }

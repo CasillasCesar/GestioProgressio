@@ -6,7 +6,7 @@ import { EmployeeCatalogComponent } from './employee-catalog/employee-catalog.co
 import { FormControl, FormsModule } from '@angular/forms';
 import { FormSubActivityComponent } from './form-sub-activity/form-sub-activity.component';
 import { CatalogResourcesComponent } from './catalog-resources/catalog-resources.component';
-
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -14,18 +14,20 @@ import { CatalogResourcesComponent } from './catalog-resources/catalog-resources
     HeaderComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
-    CatalogResourcesComponent
+    CatalogResourcesComponent,
+    FooterComponent
   ],
   exports:[
     HeaderComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
-    CatalogResourcesComponent
+    CatalogResourcesComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ComponentsModule { }

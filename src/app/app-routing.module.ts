@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePageModule } from './pages/home/home.module';
+import { ErrorComponent } from './components/error/error.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +23,9 @@ const routes: Routes = [
   {
     path: 'add-activity',
     loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule)
-  }
+  },
+  {path: '**', component: ErrorComponent}  // Cargar componente cuando la ruta es incorrecta
+
 
 ];
 
