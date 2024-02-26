@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'add-activity',
     loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule)
   },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
 
   {
     path: 'login',
@@ -46,6 +50,7 @@ const routes: Routes = [
     path: '**', 
     component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
   },
+
 
 
 ];
