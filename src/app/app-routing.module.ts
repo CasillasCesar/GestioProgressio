@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePageModule } from './pages/home/home.module';
 import { ErrorComponent } from './components/error/error.component';
+import { SlidebarComponent } from './components/slidebar/slidebar.component';
+import { LoginComponent } from './components/login/login.component';
+import { registerLocaleData } from '@angular/common';
+import { RegisterComponent } from './components/register/register.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +29,18 @@ const routes: Routes = [
     path: 'add-activity',
     loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule)
   },
-  {path: '**', component: ErrorComponent}  // Cargar componente cuando la ruta es incorrecta
+  {
+    path: '**', 
+    component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  }
 
 
 ];
