@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -21,7 +22,7 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     SlidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   exports:[
     HeaderComponent,

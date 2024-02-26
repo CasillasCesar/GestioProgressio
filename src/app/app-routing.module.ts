@@ -29,10 +29,7 @@ const routes: Routes = [
     path: 'add-activity',
     loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule)
   },
-  {
-    path: '**', 
-    component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
-  },
+
   {
     path: 'login',
     component: LoginComponent
@@ -40,7 +37,15 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  }
+  },
+  {
+    path: 'forms-proyectos',
+    loadChildren: () => import('./pages/forms-proyectos/forms-proyectos.module').then( m => m.FormsProyectosPageModule)
+  },
+  {
+    path: '**', 
+    component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
+  },
 
 
 ];
