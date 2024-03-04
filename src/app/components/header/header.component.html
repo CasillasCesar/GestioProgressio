@@ -1,18 +1,27 @@
 
-<ion-header>
+<ion-header position="fixed">
   <ion-toolbar color="primary">
-    <ion-title routerLink="/home">
+    <ion-title (click)="move('/home')">
       Mi Aplicación
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/home" expand="block" fill="clear" shape="round">
-        Home
+      <ion-button (click)="move('/inicio')" expand="block" fill="clear" shape="round">
+        Inicio
       </ion-button>
-      <ion-button routerLink="/project-catalog" expand="block" fill="clear" shape="round">
-        Projects
+      <ion-button (click)="move('/home')" expand="block" fill="clear" shape="round">
+        Tablero
       </ion-button>
-      <ion-button routerLink="/project-catalog" expand="block" fill="clear" shape="round">
-        Activities
+      <ion-button (click)="move('/project-catalog')" expand="block" fill="clear" shape="round">
+        Projectos
+      </ion-button>
+      <ion-button (click)="move('/project-catalog')" expand="block" fill="clear" shape="round">
+        Actividades
+      </ion-button>
+      <ion-button (click)="move('/login')" expand="block" fill="clear" shape="round" color="success">
+        Iniciar Sesion
+      </ion-button>
+      <ion-button (click)="move('/register')" expand="block" fill="clear" shape="round">
+        Registrarse
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
