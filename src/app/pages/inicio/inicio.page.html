@@ -1,10 +1,41 @@
+
 <ion-content [fullscreen]="true" color="secondary">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large" router-link="/home">inicios</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <p router-link="/home">
-    Holaaa
-  </p>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col class="ion-text-center" size="12">
+        <h1 class="app-title">GestioProgressio</h1>
+        <h2>Transforma la Gestión de Tu Empresa</h2>
+        <h3>La solución definitiva para la gestión de proyectos y equipos.</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="success">
+          Comenzar Ahora
+        </ion-button>
+        <ion-button >
+          Iniciar Sesi&oacute;n
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <swiper-container pagination="true" pagination-clickable="true" slides-per-view="auto" centered-slides="true" space-between="30" style="height: 85%; background-color: white; color: black;">
+    <swiper-slide style="text-align: center;display: flex;justify-content: center;align-items: center; overflow: hidden;">
+      <div style="width: 100%; height: 100%;">
+        <img src="../../../assets/images/img01.jpg" alt="Imagen 01" style="max-width: 100%; max-height: 100%; width: 100%; height: 100%;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.7); padding: 2vw; border-radius: 2vw;max-width: 90%; max-height: 90%;">
+          <!-- <h2 style="font-size: 3vw;">Mejora tu progreso</h2> -->
+          <p style="font-size: 1.2em;">¡Organiza tu trabajo y alcanza tus metas con GestioProgressio!</p>
+          <p style="font-size: .8em;">Registrate y empieza <b style="cursor: pointer;">ahora</b></p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+  </swiper-container>
+  
 </ion-content>

@@ -10,12 +10,14 @@ import { FooterComponent } from './footer/footer.component';
 import { SlidebarComponent } from './slidebar/slidebar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HeaderLoggedComponent } from './header-logged/header-logged.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    HeaderLoggedComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
     CatalogResourcesComponent,
@@ -26,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   exports:[
     HeaderComponent,
+    HeaderLoggedComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
     CatalogResourcesComponent,

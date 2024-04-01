@@ -1,0 +1,13 @@
+{
+  "Materia": [
+    null,
+    {
+      "cveMat": 1000,
+      "nomMat": "Ingles"
+    },
+    {
+      "cveMat": 2000,
+      "nomMat": "DB"
+    }
+  ]
+}

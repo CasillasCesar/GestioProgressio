@@ -60,34 +60,3 @@ ion-button.selected{
 // .normal{
 
 // }
-// ion-button {
-//     text-transform: none;
-//   }
-  
-  ion-menu-button {
-    margin-left: 10px; /* Ajustar margen para mejor posición */
-  }
-
-  ion-item{
-    cursor: pointer;
-  }
-
-  ion-item:hover{
-    // color: ;
-    --color:white;
-    --background: #262dff;
-  }
-  
-  /* Ocultar botones en pantallas pequeñas (ajustar breakpoint según sea necesario) */
-  @media (max-width: 768px) {
-    ion-buttons:not([slot="start"]) {
-      display: none;
-    }
-  }
-
-  @media (min-width : 768px) {
-    ion-buttons:not([slot="end"]) {
-        display: none;
-      }
-  }
-  
