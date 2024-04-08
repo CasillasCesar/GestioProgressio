@@ -12,4 +12,14 @@ export class InicioPage implements OnInit {
   ngOnInit() {
   }
 
+  onClick(){
+    
+  }
+
+  stepClick(){
+    let swiper = document.querySelector('#swiper');
+    console.log(swiper);
+    
+  }
+
 }

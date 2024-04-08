@@ -16,27 +16,39 @@ export class HeaderLoggedComponent  implements OnInit {
   ngOnInit() {}
 
   move(url:string, label ?: string, index ?: number){
-    // console.log(this.breadcrumbs);
-    // console.log(index);
-    
-    
+    if(index==this.breadcrumbs.length-1){
+      return
+    }
     this.selected = url;
     this.router.navigate([url]);
     if(label){
-      if(this.breadcrumbs.length == 0){
-        this.breadcrumbs[0] = {label : label, path : url}
-      }else{
-        this.breadcrumbs.push({label:label,path:url})
-      }
-    }
-    if((index || index === 0)&&this.breadcrumbs.length > 1){
+      console.log(label);
       // console.log(index);
-      this.breadcrumbs.splice(index+1)
+      if(label){
+        if(this.breadcrumbs.length == 0){
+          this.breadcrumbs[0] = {label : label, path : url}
+        }else{
+          if(label!='xxx'){
+            this.breadcrumbs.push({label:label,path:url})
+          }
+        }
+      }
+      if((index || index === 0)&&this.breadcrumbs.length > 1){
+        // console.log(index);
+        this.breadcrumbs.splice(index+1)
+      }
+    }else{
+      this.popit()
     }
   }
 
   popit():void{
+    console.log("Popeado");
+    console.log(this.breadcrumbs);
     this.breadcrumbs.pop();
+    console.log(this.breadcrumbs);
+    let element = this.breadcrumbs[this.breadcrumbs.length-1]
+    this.move(element.path,'xxx')
   }
 
 }

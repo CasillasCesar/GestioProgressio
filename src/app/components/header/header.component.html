@@ -59,7 +59,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-breadcrumbs [maxItems]="3" [itemsBeforeCollapse]="2"  color="light" style="background-color: #000814;">
+<ion-breadcrumbs [maxItems]="3" [itemsBeforeCollapse]="2" [itemsAfterCollapse]="1"  color="light" style="background-color: #000814;">
   <div *ngFor="let breadc of breadcrumbs; index as i">
     <ion-breadcrumb  (click)="move(breadc.path,undefined,i)" >{{breadc.label}}</ion-breadcrumb>
     <!-- <ion-breadcrumb *ngIf="i == 2 && breadcrumbs.length > 3 " >...</ion-breadcrumb> -->

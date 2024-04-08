@@ -1,6 +1,6 @@
 
 <ion-content [fullscreen]="true" color="secondary">
-  <ion-grid fixed>
+  <ion-grid fixed="false" id="row-pag" class="ion-no-padding">
     <ion-row>
       <ion-col class="ion-text-center" size="12">
         <h1 class="app-title">GestioProgressio</h1>
@@ -13,29 +13,136 @@
         <ion-button color="success">
           Comenzar Ahora
         </ion-button>
-        <ion-button >
+        <ion-button>
           Iniciar Sesi&oacute;n
         </ion-button>
       </ion-col>
     </ion-row>
+    <ion-row >
+      <ion-col size="12" style="padding: .3em;">
+        <swiper-container pagination="true" pagination-clickable="true" slides-per-view="auto" centered-slides="true" space-between="30" style=" background-color: white; color: black;">
+          <swiper-slide>
+            <div style="width: 100%; height: 100%;">
+              <img src="../../../assets/images/img01.jpg" alt="Imagen 01" style="max-width: 100%; max-height: 100%; width: 100%; height: 100%;">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.7); padding: 2vw; border-radius: 2vw;max-width: 90%; max-height: 90%;">
+                <!-- <h2 style="font-size: 3vw;">Mejora tu progreso</h2> -->
+                <p style="font-size: 1.2em;">¡Organiza tu trabajo y alcanza tus metas con GestioProgressio!</p>
+                <p style="font-size: .8em;">Registrate y empieza <b style="cursor: pointer;">ahora</b></p>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+        </swiper-container>
+      </ion-col>
+    </ion-row>
     <ion-row>
-      <ion-col size="12"></ion-col>
+      <ion-col class="ion-text-center" size="12" style="background-color: white; color: black;">
+        <p style="font-size: 1.15em;">Olvidate de los problemas y el tiempo perdido en la administración de proyectos</p>
+        <p style="font-size: 1.15em; margin-bottom: 0px;">Unete a todas estas empresas que han decidido la mejor opcion</p>
+        <p></p>
+        <img src="../../../assets/images/empresas.jpg" alt="Imagen de las empresas asociadas"/>
+        <p></p>
+      </ion-col>
+    </ion-row>
+    <!-- Si queremos poner los logos de las empresas será de esta forma -->
+    <!-- <ion-row class="ion-justify-content-center">
+      <ion-col size="1">A</ion-col>
+      <ion-col size="1">A</ion-col>
+      <ion-col size="1">A</ion-col>
+      <ion-col size="1">A</ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <h1>Deja de perder tiempo organizando y enfocate en lo importante</h1>
+        <h3>Simple, flexible y poderosa. Olvidate de no saber que esta haciendo tus empleados</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="4" size-xs="0" class="ion-hide-sm">
+        <ion-row>
+          <ion-col size="12">
+            <ion-card button (click)="stepClick()" class="ion-activatable">
+              <ion-card-header>
+                <ion-card-title>Gestiona Proyectos</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Agrega y gestiona los proyectos que se llevan en tu empresa
+              </ion-card-content>
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card button (click)="stepClick()" class="ion-activatable">
+              <ion-card-header>
+                <ion-card-title>Maneja las actividades</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Mejora el rendimiento de los equipos asignandoles actividades a cada uno de los integrantes
+              </ion-card-content>
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card button (click)="stepClick()" class="ion-activatable">
+              <ion-card-header>
+                <ion-card-title>Gestiona Proyectos</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Agrega y gestiona los proyectos que se llevan en tu empresa
+              </ion-card-content>
+              <ion-ripple-effect type="bounded"></ion-ripple-effect>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+        <!-- <ion-row style="height: 15em; background-color: white;" class="ion-activatable">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-col size="12">
+            <ion-ripple-effect></ion-ripple-effect>
+            <div class="div-center">
+              Hola
+              <ion-ripple-effect type="bounded"/>
+            </div>
+          </ion-col>
+        </ion-row> -->
+        <!-- <ion-row style="height: 15em;">
+          <ion-col size="12" >
+            <div class="ion-activatable">
+              Hola
+              <ion-ripple-effect type="bounded"/>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row style="height: 15em;">
+          <ion-col size="12" >
+            <div class="ion-activatable">
+              Hola
+              <ion-ripple-effect type="bounded"/>
+            </div>
+          </ion-col>
+        </ion-row> -->
+      
+      </ion-col>
+      <ion-col size-md="8" size-xs="12">
+        <swiper-container pagination="true" pagination-clickable="true" slides-per-view="auto" centered-slides="true" space-between="30" style=" background-color: white; color: black;" id="swiper">
+          <swiper-slide>
+            <div style="width: 100%; height: 100%;">
+              <img src="../../../assets/images/img01.jpg" alt="Imagen 01" style="max-width: 100%; max-height: 100%; width: 100%; height: 100%;">
+            </div>
+          </swiper-slide>
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+        </swiper-container>
+      </ion-col>
     </ion-row>
   </ion-grid>
 
-  <swiper-container pagination="true" pagination-clickable="true" slides-per-view="auto" centered-slides="true" space-between="30" style="height: 85%; background-color: white; color: black;">
-    <swiper-slide style="text-align: center;display: flex;justify-content: center;align-items: center; overflow: hidden;">
-      <div style="width: 100%; height: 100%;">
-        <img src="../../../assets/images/img01.jpg" alt="Imagen 01" style="max-width: 100%; max-height: 100%; width: 100%; height: 100%;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.7); padding: 2vw; border-radius: 2vw;max-width: 90%; max-height: 90%;">
-          <!-- <h2 style="font-size: 3vw;">Mejora tu progreso</h2> -->
-          <p style="font-size: 1.2em;">¡Organiza tu trabajo y alcanza tus metas con GestioProgressio!</p>
-          <p style="font-size: .8em;">Registrate y empieza <b style="cursor: pointer;">ahora</b></p>
-        </div>
-      </div>
-    </swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-  </swiper-container>
+  
   
 </ion-content>

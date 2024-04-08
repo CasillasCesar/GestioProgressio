@@ -16,6 +16,9 @@ export class HeaderComponent  implements OnInit {
   ngOnInit() {}
 
   move(url:string, label ?: string, index ?: number){
+    if(index==this.breadcrumbs.length-1){
+      return
+    }
     this.selected = url;
     this.router.navigate([url]);
     if(label){
