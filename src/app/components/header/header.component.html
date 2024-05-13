@@ -21,7 +21,7 @@
     <ion-item>
       <ion-label (click)="move('/login', 'Login')">Iniciar Sesion</ion-label>
     </ion-item>
-    <ion-item (click)="move('/register', 'Registro')">
+    <ion-item (click)="move('/register', 'Registro')" >
       <ion-label>Registrarse</ion-label>
     </ion-item>
 
@@ -35,7 +35,7 @@
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
     <ion-title (click)="move('/home','Tablero')">
-      Gestio Progressio
+      <img src="../../../assets/images/logos.svg" alt="" height="110">
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="move('/inicio','Inicio')" expand="block" fill="clear" shape="round" [class]="this.selected == '/inicio' ? 'selected' : 'normal'">
@@ -59,7 +59,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-breadcrumbs [maxItems]="3" [itemsBeforeCollapse]="2" [itemsAfterCollapse]="1"  color="light" style="background-color: #000814;">
+<ion-breadcrumbs [maxItems]="3" [itemsBeforeCollapse]="2" [itemsAfterCollapse]="1"  color="light" style="background-color: #330033;">
   <div *ngFor="let breadc of breadcrumbs; index as i">
     <ion-breadcrumb  (click)="move(breadc.path,undefined,i)" >{{breadc.label}}</ion-breadcrumb>
     <!-- <ion-breadcrumb *ngIf="i == 2 && breadcrumbs.length > 3 " >...</ion-breadcrumb> -->
