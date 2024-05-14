@@ -11,7 +11,7 @@ export class HeaderComponent  implements OnInit {
 
   constructor(private router : Router) { }
   selected : string = '';
-  breadcrumbs : Array<Breadcrumbs> = [];
+  breadcrumbs : Array<Breadcrumbs> = [{label:"inicio",path:"/inicio"}];
 
   ngOnInit() {}
 
