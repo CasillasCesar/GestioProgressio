@@ -20,22 +20,14 @@ import { HeaderLoggedComponent } from './header-logged/header-logged.component';
     HeaderLoggedComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
-    CatalogResourcesComponent,
-    FooterComponent,
-    SlidebarComponent,
-    LoginComponent,
-    RegisterComponent,
+    CatalogResourcesComponent
   ],
   exports:[
     HeaderComponent,
     HeaderLoggedComponent,
     EmployeeCatalogComponent,
     FormSubActivityComponent,
-    CatalogResourcesComponent,
-    FooterComponent,
-    SlidebarComponent,
-    LoginComponent,
-    RegisterComponent
+    CatalogResourcesComponent
   ],
   imports: [
     CommonModule,

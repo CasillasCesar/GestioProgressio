@@ -52,6 +52,7 @@ const routes: Routes = [
     component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
   },
 
+  {path: '**', component: ErrorComponent}  // Cargar componente cuando la ruta es incorrecta
 
 
 ];
