@@ -1,3 +1,8 @@
 ion-content{
     background-color: #EAEAEA;
 }
+
+ion-router-outlet{
+    display: block;
+    margin-top: 6.5em;
+}

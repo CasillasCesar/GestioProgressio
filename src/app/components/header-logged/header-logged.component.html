@@ -1,0 +1,38 @@
+
+<ion-header position="fixed">
+  <ion-toolbar color="primary">
+    <ion-title (click)="move('/home','Tablero')">
+      Gestio Progressio
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="move('/inicio','Inicio')" expand="block" fill="clear" shape="round" [class]="this.selected == '/inicio' ? 'selected' : 'normal'">
+        Inicio
+      </ion-button>
+      <ion-button (click)="move('/home', 'Tablero')" expand="block" fill="clear" shape="round" [class]="this.selected == '/home' ? 'selected' : 'normal'">
+        Tablero
+      </ion-button>
+      <ion-button (click)="move('/project-catalog', 'Catalogo del Proyecto')" expand="block" fill="clear" shape="round" [class]="this.selected == '/project-catalog' ? 'selected' : 'normal'">
+        Projectos
+      </ion-button>
+      <ion-button (click)="move('/project-catalog', 'Catalogo del Proyecto')" expand="block" fill="clear" shape="round" [class]="this.selected == '/project-catalog' ? 'selected' : 'normal'">
+        Actividades
+      </ion-button>
+      <ion-button (click)="move('/login', 'Login')" expand="block" fill="clear" shape="round" [class]="this.selected == '/login' ? 'selected' : 'normal'" color="success">
+        Iniciar Sesion
+      </ion-button>
+      <ion-button (click)="move('/register', 'Registro')" expand="block" fill="clear" shape="round" [class]="this.selected == '/register' ? 'selected' : 'normal'">
+        Registrarse
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-breadcrumbs [maxItems]="4" [itemsBeforeCollapse]="3" (ionCollapsedClick)="popit()" color="light" style="background-color: #000814;">
+  <div *ngFor="let breadc of breadcrumbs; index as i">
+    <ion-breadcrumb  (click)="move(breadc.path,undefined,i)" >{{breadc.label}}</ion-breadcrumb>
+    <!-- <ion-breadcrumb *ngIf="i == 2 && breadcrumbs.length > 3 " >...</ion-breadcrumb> -->
+  </div>
+  <!-- <ion-breadcrumb (click)="move('/inicio','Inicio')" >Home/ion-breadcrumb>
+  <ion-breadcrumb (click)="move('/inicio', 'Inicio')" >Electronics</ion-breadcrumb>
+  <ion-breadcrumb (click)="move('/inicio', 'Inicio')" >Cameras</ion-breadcrumb>
+  <ion-breadcrumb (click)="move('/inicio', 'Inicio')" >Film</ion-breadcrumb> -->
+</ion-breadcrumbs>

@@ -1,7 +1,6 @@
-<app-header></app-header>
-<ion-content>
-  <ion-searchbar placeholder="Filter By Project Name or Project Manager" (ionInput)="onSearchChange($event)"></ion-searchbar>
+<ion-content color="secondary" >
   <ion-grid>
+    <ion-searchbar placeholder="Filter By Project Name or Project Manager" (ionInput)="onSearchChange($event)" ></ion-searchbar>
     <ion-row>
       <!-- Este se repetira GOOOD -->
       <!-- <ion-col size="6">
@@ -260,9 +259,10 @@
             </ion-button>
           </ion-card-content>
         </ion-card>
-      </ion-col> -->
-      
+      </ion-col> -->    
       <!-- elimina el siguiente el siguiente -->
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<app-footer></app-footer>

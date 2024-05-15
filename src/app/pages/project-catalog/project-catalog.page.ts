@@ -51,8 +51,9 @@ export class ProjectCatalogPage implements OnInit {
   move(proyecto : Proyecto){
     this.dataService.setProyecto(proyecto);
     this.router.navigate(["/add-activity"])
-  }
+  }
 
 
 
 }
+  
