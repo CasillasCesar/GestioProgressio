@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Swiper from 'swiper';
+import { SwiperContainer } from 'swiper/element';
 
 @Component({
   selector: 'app-inicio',
@@ -16,10 +18,10 @@ export class InicioPage implements OnInit {
     
   }
 
-  stepClick(){
-    let swiper = document.querySelector('#swiper');
+  stepClick(i:number){
+    let swiper = document.querySelector('#swiper') as SwiperContainer;
     console.log(swiper);
-    
+    swiper.swiper.slideTo(i)
   }
 
 }
