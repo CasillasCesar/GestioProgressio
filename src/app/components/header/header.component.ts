@@ -11,11 +11,14 @@ export class HeaderComponent  implements OnInit {
 
   constructor(private router : Router) { }
   selected : string = '';
-  breadcrumbs : Array<Breadcrumbs> = [];
+  breadcrumbs : Array<Breadcrumbs> = [{label:"Inicio",path:"/inicio"}];
 
   ngOnInit() {}
 
   move(url:string, label ?: string, index ?: number){
+    if(index==this.breadcrumbs.length-1){
+      return
+    }
     this.selected = url;
     this.router.navigate([url]);
     if(label){
@@ -25,7 +28,9 @@ export class HeaderComponent  implements OnInit {
         if(this.breadcrumbs.length == 0){
           this.breadcrumbs[0] = {label : label, path : url}
         }else{
-          if(label!='xxx'){
+          // console.log(this.breadcrumbs[0].label==label);
+          
+          if(label!='xxx' && label != this.breadcrumbs[this.breadcrumbs.length-1].label){
             this.breadcrumbs.push({label:label,path:url})
           }
         }

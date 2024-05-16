@@ -15,3 +15,19 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+.floating-card-container {
+    position: relative;
+  }
+
+  .floating-card {
+    position: absolute;
+    bottom: 20px; /* Adjust the bottom margin as needed */
+    left: 50%; /* Center the card horizontally */
+    transform: translateX(-50%); /* Offset the card by half its width to center it */
+    background-color: #fff; /* Set the background color */
+    padding: 15px; /* Add padding for card content */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    width: 300px; /* Adjust the width as needed */
+  }

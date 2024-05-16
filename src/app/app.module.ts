@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BaseRouteReuseStrategy } from '@angular/router';
-import { FormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card'; 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -16,7 +16,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ComponentsModule,HttpClientModule, BrowserAnimationsModule, MatDialogModule, FormsModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    ComponentsModule,
+    HttpClientModule, 
+    BrowserAnimationsModule, MatDialogModule, 
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [{ provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
