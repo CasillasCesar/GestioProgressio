@@ -36,6 +36,12 @@
     </ion-buttons>
     <ion-title (click)="move('/home','Tablero')">
       Gestio Progressio
+      </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title (click)="move('/home','Tablero')">
+      Gestio Progressio
     </ion-title>
     <ion-buttons slot="end" class="btn-end">
       <ion-button (click)="move('/inicio','Inicio')" expand="block" fill="clear" shape="round" [class]="this.selected == '/inicio' ? 'selected' : 'normal'">

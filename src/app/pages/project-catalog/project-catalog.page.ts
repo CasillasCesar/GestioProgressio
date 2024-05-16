@@ -9,24 +9,10 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./project-catalog.page.scss'],
 })
 export class ProjectCatalogPage implements OnInit {
+  constructor(private dataService : DataService, private router : Router) { }
 
-  
-  public user: any;
-  public campo!: string;
-  proyectos: any;
-  filtrados: any[] = [];
-
-
-  constructor(private dataService : DataService, private router : Router) { 
-    this.user = {
-      nombre: '',
-      responsable: '',
-      biografia: '',
-      genero: ''
-    }
-  }
-
-
+  proyectos : Proyecto[]= [] as Proyecto[];
+  filtrados : Proyecto[]= [] as Proyecto[];
 
   ngOnInit() {
     this.dataService.getProjects().subscribe(
@@ -49,7 +35,7 @@ export class ProjectCatalogPage implements OnInit {
     
     let filtro = event.detail.value.toLowerCase();
     if(filtro && filtro != ''){
-      this.filtrados = this.proyectos.filter((proyecto: { nombre: string; nombreencargado: string; })=>{
+      this.filtrados = this.proyectos.filter(proyecto=>{
         const nombre = proyecto.nombre.toLowerCase();
         const encargado = proyecto.nombreencargado.toLowerCase();
         return(
@@ -65,7 +51,7 @@ export class ProjectCatalogPage implements OnInit {
   move(proyecto : Proyecto){
     this.dataService.setProyecto(proyecto);
     this.router.navigate(["/add-activity"])
-  }
+  }
 
 
 
