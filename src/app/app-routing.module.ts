@@ -51,9 +51,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/test/test.module').then( m => m.TestPageModule)
   },
   {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
     path: '**', 
     component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
   },
+
 
 
 
