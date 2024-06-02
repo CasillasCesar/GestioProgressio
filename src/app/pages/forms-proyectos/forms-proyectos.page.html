@@ -1,37 +1,42 @@
 <ion-content>
   <div class="center">
-    <section id="content">
-  
-  
-  <h1 class="subheader">Formulario</h1>
-  
-  <form class="full-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="nombre">Nombre del proyecto:</label>
-        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required pattern="[a-zA-Z]+"/>
-        <small *ngIf="!nombre.valid && nombre.touched">El campo no es valido</small>
-    </div>
-  
-    <div class="form-group">
-        <label for="responsable">Responsable:</label>
-        <input type="text" name="responsable" #responsable="ngModel"  [(ngModel)]="user.responsable" required pattern="[a-zA-Z]+"/>
-        <small *ngIf="!responsable.valid && responsable.touched">El campo no es valido</small>
-    </div>
-  
-    <div class="form-group">
-        <label for="biografia">Descripcion:</label>
-        <textarea name="biografia" #biografia="ngModel" [(ngModel)]="user.biografia" required></textarea>
-        <small *ngIf="!biografia.valid && biografia.touched">Llena este campo</small>
-    </div>
-  
-    <div class="clear-fix">
-  
-    </div>
-  
-    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="userForm.invalid"> 
-  </form>
-  
-
-  </section>
+    <section id="content" class="container mt-5">
+      <h1 class="subheader mb-4"><b>Agregar nuevo proyecto</b></h1>
+      <form class="full-form needs-validation" novalidate #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-group mb-3">
+            <label for="nombre" class="form-label">Nombre del proyecto:</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" #nombre="ngModel" [(ngModel)]="project.nombre" required />
+            <div class="invalid-feedback" *ngIf="!nombre.valid && nombre.touched">El campo no es válido.</div>
+        </div>
+    
+        <div class="form-group mb-3">
+            <label for="responsable" class="form-label">Responsable gerente:</label>
+            <input type="text" class="form-control" name="responsable" id="responsable" #responsable="ngModel" [(ngModel)]="project.responsable" required />
+            <div class="invalid-feedback" *ngIf="!responsable.valid && responsable.touched">El campo no es válido.</div>
+        </div>
+    
+        <div class="form-group mb-3">
+            <label for="fechaInicio" class="form-label">Fecha de inicio:</label>
+            <input type="date" class="form-control" name="fechaInicio" id="fechaInicio" #fechaInicio="ngModel" [(ngModel)]="project.fechaInicio" required/>
+            <div class="invalid-feedback" *ngIf="!fechaInicio.valid && fechaInicio.touched">Selecciona una fecha de inicio.</div>
+        </div>
+    
+        <div class="form-group mb-3">
+            <label for="fechaFin" class="form-label">Fecha de fin:</label>
+            <input type="date" class="form-control" name="fechaFin" id="fechaFin" #fechaFin="ngModel" [(ngModel)]="project.fechaFin" required/>
+            <div class="invalid-feedback" *ngIf="!fechaFin.valid && fechaFin.touched">Selecciona una fecha de fin.</div>
+        </div>
+    
+        <div class="form-group mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea class="form-control" name="biografia" id="descripcion" #descripcion="ngModel" [(ngModel)]="project.descripcion" required></textarea>
+            <div class="invalid-feedback" *ngIf="!descripcion.valid && descripcion.touched">Llena este campo.</div>
+        </div>
+    
+        <input type="submit" value="Guardar" class="btn btn-success" [disabled]="form.invalid"> 
+    </form>
+    
+    </section>
+    
   </div>
 </ion-content>

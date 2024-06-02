@@ -1,3 +1,20 @@
-<p>
-  register works!
-</p>
+<div id="contenedor">
+    <div id="central">
+        <div id="registro">
+            <div class="titulo">
+                Registrarse
+            </div>
+            <form class="full-form needs-validation" novalidate #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+              <input type="text" class="form-control" name="usuario" id="usuario" #usuario="ngModel" [(ngModel)]="user.nombreUsuario" placeholder="Nombre de usuario" required>
+              <input type="email" class="form-control" name="email" id="email" #correo="ngModel" [(ngModel)]="user.correo"  placeholder="Correo electrónico" required>
+              <input type="password" class="form-control" name="password" id="password" #contrasena="ngModel" [(ngModel)]="user.contrasena"  placeholder="Contraseña" required>
+              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" #confirmarContrasena="ngModel" [(ngModel)]="user.confirmarContrasena" placeholder="Confirmar Contraseña" required>
+              <button type="submit" title="Registrar" [disabled]="userForm.invalid">Registrarse</button>
+          </form>
+            <div class="pie-form">
+                <a href="../login/login.component.html">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  

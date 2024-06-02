@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePageModule } from './pages/home/home.module';
 import { ErrorComponent } from './components/error/error.component';
+import { FormsProyectosPageModule } from './pages/forms-proyectos/forms-proyectos.module';
+
 import { SlidebarComponent } from './components/slidebar/slidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { registerLocaleData } from '@angular/common';
@@ -59,6 +61,7 @@ const routes: Routes = [
     component: ErrorComponent // Cargar componente cuando la ruta es incorrecta
   },
 
+  {path: '**', component: ErrorComponent}  // Cargar componente cuando la ruta es incorrecta
 
 
 
