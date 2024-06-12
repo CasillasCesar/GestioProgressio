@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Breadcrumbs } from 'src/app/interfaces/breadcrumbs';
 
@@ -7,13 +7,24 @@ import { Breadcrumbs } from 'src/app/interfaces/breadcrumbs';
   templateUrl: './header-logged.component.html',
   styleUrls: ['./header-logged.component.scss'],
 })
-export class HeaderLoggedComponent  implements OnInit {
+export class HeaderLoggedComponent  implements OnInit , AfterContentChecked{
 
   constructor(private router : Router) { }
   selected : string = '';
-  breadcrumbs : Array<Breadcrumbs> = [];
+  breadcrumbs : Array<Breadcrumbs> = [{label:"Tablero",path:"/home"}];
+  bandera : boolean = false;
+  ngOnInit(){
+    console.log();
+  }
 
-  ngOnInit() {}
+  ngAfterContentChecked(){
+    // console.log('Aqui');
+    if (!this.bandera && this.router.url != '/') {
+      console.log(this.router.url);
+      this.selected = this.router.url;
+      this.bandera = true
+    }
+  }
 
   move(url:string, label ?: string, index ?: number){
     if(index==this.breadcrumbs.length-1){
@@ -28,7 +39,9 @@ export class HeaderLoggedComponent  implements OnInit {
         if(this.breadcrumbs.length == 0){
           this.breadcrumbs[0] = {label : label, path : url}
         }else{
-          if(label!='xxx'){
+          // console.log(this.breadcrumbs[0].label==label);
+          
+          if(label!='xxx' && label != this.breadcrumbs[this.breadcrumbs.length-1].label){
             this.breadcrumbs.push({label:label,path:url})
           }
         }
@@ -50,5 +63,9 @@ export class HeaderLoggedComponent  implements OnInit {
     let element = this.breadcrumbs[this.breadcrumbs.length-1]
     this.move(element.path,'xxx')
   }
+
+  exit(){
+    alert('Se va a cerrar la senal (proximamente)')
+}
 
 }
