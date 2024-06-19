@@ -1,3 +1,4 @@
+
 <ion-content [fullscreen]="true" color="secondary">
   <ion-grid fixed>
     <ion-row>
@@ -95,7 +96,7 @@
               {{ subActividad.nombre }}
               <ion-icon name="close" (click)="removeSubActividad(subActividad)"></ion-icon>
             </ion-chip>
-            <ion-button expand="full" [disabled]="!actividad.fechaFin || !actividad.fechaInicio || (actividad.personalAsignado.length == 0)" (click)="openSubActividadModal()">Agregar Sub-Actividad</ion-button>
+            <ion-button expand="full" [disabled]="!actividad.fechaFin || !actividad.fechaInicio || (actividad.personalAsignado.length === 0)" (click)="openSubActividadModal()">Agregar Sub-Actividad</ion-button>
           </ion-item>
           
           <ion-item *ngIf="!actividad.areSubActividades">

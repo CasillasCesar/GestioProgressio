@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Personal } from 'src/app/interfaces/personal';
 import { EmployeeCatalogComponent } from '../employee-catalog/employee-catalog.component';
 import { SubActividad } from 'src/app/interfaces/sub-actividad';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-sub-activity',
@@ -22,10 +24,14 @@ export class FormSubActivityComponent  implements OnInit {
     descripcion: '',
     pkProyectoID : this.proyectoid
   };
-  constructor(private modalController : ModalController) { }
+  constructor(private modalController : ModalController, private router : Router, private authService: AuthService) { }
   personalA : any ;
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);  // Redirige a login si no está autenticado
+    }
+  }
 
   async openPersonalModal() {
     const modal = await this.modalController.create({

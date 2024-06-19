@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Personal } from 'src/app/interfaces/personal';
 import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-employee-catalog',
@@ -14,9 +17,13 @@ export class EmployeeCatalogComponent  implements OnInit {
   @Input() encargadoId :any ;
   personas : Personal[] = [];
 
-  constructor(private modalCtrl : ModalController, private dataService : DataService) { }
+  constructor(private modalCtrl : ModalController, private dataService : DataService, private authService: AuthService, private router : Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);  // Redirige a login si no está autenticado
+    }
+  }
 
   async ionViewWillEnter(){
     if(this.personalAsignado.length == 0 || this.encargadoId){

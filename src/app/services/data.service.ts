@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Proyecto } from '../interfaces/proyecto';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class DataService {
   private apiUrl = 'http://localhost:3000'; // Si se desea volver a usar solo tengo que cambiar la URL
   private proyectSelected : Proyecto = {} as Proyecto;
   proyectos: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   // Obtener todos los empleados
   getEmployees(): Observable<any> {
@@ -44,14 +45,34 @@ export class DataService {
   }
 
   // Agregar un nuevo usuario
-  addUser(user: any): Observable<any>{
+  addUser(user: any): Observable<any> {
     const url = `${this.apiUrl}/register`;
     const body = {
       nombre_usuario: user.nombreUsuario,
       correo_usuario: user.correo,
       contrasena_usuario: user.contrasena
     };
-    return this.http.post(url, body);
+
+    return this.http.post(url, body).pipe(
+      catchError(this.handleError) // Manejo de errores
+    );
+  }
+
+  // Manejador de errores genérico
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente o problemas de red
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // El backend devolvió un código de respuesta de error
+      // El cuerpo de la respuesta puede contener pistas sobre qué salió mal
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // Devuelve un Observable con un mensaje de error orientado al usuario
+    return throwError(
+      'Algo salio mal, intenta de nuevo mas tarde.');
   }
 
   // Agregar un nuevo rol
@@ -109,9 +130,21 @@ export class DataService {
       const body = {
         nombre_usuario: loginData.nombre_usuario,
         contrasena_usuario: loginData.contrasena_usuario
-      }
-      return this.http.post(url, body);
+      };
+      return this.http.post(url, body).pipe(
+        tap((response: any) => {
+          localStorage.setItem('token', response.token);
+          this.authService.startTokenTimer();
+        }),
+        catchError(error => {
+          console.error('Error during login:', error);
+          return throwError(() => new Error('Error during login'));
+        })
+      );
     }
+
+    
+ 
 
   // Puedes agregar más funciones según las necesidades de tu aplicación
 }

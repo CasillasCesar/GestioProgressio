@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/interfaces/proyecto';
 import { DataService } from 'src/app/services/data.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-project-catalog',
@@ -9,12 +10,16 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./project-catalog.page.scss'],
 })
 export class ProjectCatalogPage implements OnInit {
-  constructor(private dataService : DataService, private router : Router) { }
+  constructor(private dataService : DataService, private router : Router, private authService: AuthService) { }
 
   proyectos : Proyecto[]= [] as Proyecto[];
   filtrados : Proyecto[]= [] as Proyecto[];
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);  // Redirige a login si no está autenticado
+    }
+
     this.dataService.getProjects().subscribe(
       (data:any)=>{
         // console.log(data);

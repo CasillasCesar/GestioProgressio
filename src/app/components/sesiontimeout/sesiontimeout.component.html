@@ -1,0 +1,17 @@
+<!-- session-timeout-alert.component.html -->
+<div class="modal-backdrop" *ngIf="showModal"></div> <!-- Backdrop para bloquear la interacción detrás del modal -->
+<div class="modal" tabindex="-1" role="dialog" *ngIf="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title"><b>ALERTA</b></h2>
+      </div>
+      <div class="modal-body">
+        <p>Tu sesión expirará en menos de un minuto. ¿Deseas continuar navegando?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="refreshSession()">Expandir sesion</button>
+      </div>
+    </div>
+  </div>
+</div>

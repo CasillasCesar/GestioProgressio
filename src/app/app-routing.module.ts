@@ -8,6 +8,8 @@ import { SlidebarComponent } from './components/slidebar/slidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { registerLocaleData } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
+import { SesiontimeoutComponent } from './components/sesiontimeout/sesiontimeout.component';
+//import { NonAuthGuard } from './guards/nonauthguard';
 
 const routes: Routes = [
   {
@@ -42,7 +44,8 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    //canActivate: [NonAuthGuard]
   },
   {
     path: 'forms-proyectos',

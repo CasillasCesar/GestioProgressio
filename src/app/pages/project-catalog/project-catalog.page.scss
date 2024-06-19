@@ -11,6 +11,9 @@ body {
     /* Propiedades para utilizar todo el marco del navegador para el sitio web */
     margin: 0px;
     padding: 0px;
+
+    background: rgb(112,127,215);
+    background: radial-gradient(circle, rgba(112,127,215,1) 40%, rgba(0,74,255,0.3562558812587535) 100%, rgba(2,0,36,1) 100%); 
 }
 
 #header {
