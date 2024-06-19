@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -201,6 +202,8 @@ export class AddActivityPage implements OnInit {
     });
     ctrl.present()
     await this.actividades.forEach((actividad:any)=>{
+      console.log(actividad);
+      
       this.dataService.addFullActivity(actividad).subscribe((data)=>{this.removeActividad(actividad)})
     });
     await ctrl.dismiss()
