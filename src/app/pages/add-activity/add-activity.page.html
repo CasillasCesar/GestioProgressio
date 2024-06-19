@@ -16,12 +16,12 @@
                   <ion-row class="ion-justify-content-end">
                     <ion-item lines="none">
                       <ion-label>
-                        Start Date: {{proyecto.fechainicio | date:'dd-MM-yyyy' }}
+                        Inicio: {{proyecto.fechainicio | date:'dd-MM-yyyy' }}
                       </ion-label>
                     </ion-item>
                     <ion-item lines="none">
                       <ion-label>
-                        End Date: {{proyecto.fechafin | date:'dd-MM-yyyy' }}
+                        Fin: {{proyecto.fechafin | date:'dd-MM-yyyy' }}
                       </ion-label>
                     </ion-item>
                   </ion-row>
@@ -44,6 +44,7 @@
             </ion-row>
             <ion-row>
               <ion-col size="12" style="text-align: right;">
+                <b>Jefe de proyecto : </b>
                 {{proyecto.nombreencargado}}
               </ion-col>
             </ion-row>
@@ -109,13 +110,13 @@
             <ion-button expand="full" (click)="openRecursoModal()">Agregar Recursos</ion-button>
           </ion-item>
       
-          <ion-button (click)="sendData()" expand="full" [disabled]="!formulario.valid">Enviar</ion-button>
+          <ion-button (click)="sendData()" expand="full" [disabled]="!formulario.valid">Preparar para guardar</ion-button>
         </form>
       </ion-col>
       <ion-col>
         <ion-content>
           <ion-button color="success" (click)="saveData()" [disabled]="actividades.length <= 0" expand="block">
-            Save All Activities
+            Guardar y enviar todas las actividades
           </ion-button>
           <ion-card *ngFor="let actividad of actividades">
             <ion-card-header>

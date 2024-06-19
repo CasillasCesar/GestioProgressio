@@ -34,6 +34,7 @@
     "bootstrap": "^5.3.3",
     "ionicons": "^7.0.0",
     "jquery": "^3.6.0",
+    "jquery": "^3.6.0",
     "ng-animate": "^2.0.1",
     "nodemailer": "^6.9.13",
     "rxjs": "~7.8.0",

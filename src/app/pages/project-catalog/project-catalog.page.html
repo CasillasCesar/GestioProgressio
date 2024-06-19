@@ -1,6 +1,6 @@
 <ion-content color="secondary" >
   <ion-grid>
-    <ion-searchbar placeholder="Filter By Project Name or Project Manager" (ionInput)="onSearchChange($event)" ></ion-searchbar>
+    <ion-searchbar placeholder="Filtrar por nombre de proyecto o jefe de proyecto" (ionInput)="onSearchChange($event)" ></ion-searchbar>
     <ion-row>
       <!-- Este se repetira GOOOD -->
       <!-- <ion-col size="6">
@@ -70,11 +70,12 @@
             <hr>
             <ion-row>
               <ion-col style="text-align: right;">
+                <b>Jefe del Proyecto :</b>
                 <ion-label>{{proyecto.nombreencargado}}</ion-label>
               </ion-col>
             </ion-row>
             <ion-button expand="full" fill="clear" slot="end" (click)="move(proyecto)">
-              Add Activity
+              Agregar Actividades
             </ion-button>
           </ion-card-content>
         </ion-card>

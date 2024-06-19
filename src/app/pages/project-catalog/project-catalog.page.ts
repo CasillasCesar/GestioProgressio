@@ -22,7 +22,7 @@ export class ProjectCatalogPage implements OnInit {
 
     this.dataService.getProjects().subscribe(
       (data:any)=>{
-        // console.log(data);
+        console.log(data);
         this.proyectos = data.data;
         console.log(this.proyectos);
         
@@ -32,6 +32,8 @@ export class ProjectCatalogPage implements OnInit {
       },
       ()=>{
         this.filtrados = [...this.proyectos]
+        console.log(this.filtrados);
+        
       })
   }
 
