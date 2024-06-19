@@ -9,6 +9,7 @@ import { Personal } from 'src/app/interfaces/personal';
 import { Proyecto } from 'src/app/interfaces/proyecto';
 import { Recursos } from 'src/app/interfaces/recursos';
 import { SubActividad } from 'src/app/interfaces/sub-actividad';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -41,11 +42,16 @@ export class AddActivityPage implements OnInit {
     private dataService: DataService,
     private router: Router,
     private fb: FormBuilder,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private authService: AuthService
   ) {}
 
 
   ngOnInit(): void {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);  // Redirige a login si no está autenticado
+    }
+
     this.formulario = this.fb.group({
       nombreActividad: ['', Validators.required],
       fechaInicio: ['', [Validators.required, this.fechaValidator]],

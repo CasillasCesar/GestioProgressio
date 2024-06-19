@@ -6,6 +6,12 @@ body {
     
     margin: 0;
     background-color: #0f4c75;
+    /* Establece la imagen de fondo con una transparencia del 30% */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://static.vecteezy.com/system/resources/thumbnails/007/523/401/small/circuit-board-technology-background-purple-and-blue-light-banner-electronic-system-concept-vector.jpg');
+    background-size: cover;
+    /* Ajusta la imagen para cubrir toda el área disponible */
+    background-repeat: no-repeat;
+    /* Asegura que la imagen no se repita */
 }
 
 #contenedor {
@@ -22,13 +28,13 @@ body {
 }
 
 #central {
-    max-width: 320px;
+    max-width: 360px;
     width: 100%;
 }
 
 .titulo {
     font-size: 250%;
-    color:#bbe1fa;
+    color:#8fd8ff;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -36,7 +42,8 @@ body {
 #registro {
     width: 100%;
     padding: 50px 30px;
-    background-color: #3282b8;
+    background: rgb(68,59,175);
+    background: linear-gradient(180deg, rgba(68,59,175,1) 70%, rgba(0,74,255,0.3562558812587535) 100%, rgba(2,0,36,1) 100%); 
     
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
@@ -52,13 +59,13 @@ body {
 #registro input {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
-    color: #1b262c;
+    color: black;
     
     display: block;
     width: 100%;
     height: 40px;
     
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding: 5px 5px 5px 10px;
     
     box-sizing: border-box;
@@ -71,7 +78,7 @@ body {
 
 #registro input::placeholder {
     font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+    color: #bebebe;
 }
 
 #registro button {
@@ -91,9 +98,52 @@ body {
     margin-top: 10px;
 }
 
+#registro .form-group{
+    display: flex;
+    flex-direction: column; /* Cambio de 'align-items: center' a 'flex-direction: column' para apilar verticalmente */
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#registro .form-group #password{
+    flex-grow: 1;
+    margin-right: 37px;
+}
+
+#registro .form-group .view{
+    display: inline;
+    position: absolute;
+    right: -3px;
+    top: -10px;
+    cursor: pointer;
+    width: 39px;
+    height: 39px;
+}
+
+#registro  .text-required{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    font-style: inherit;
+}
+
+#registro .form-group .text-required {
+    position: relative; /* Cambio de 'absolute' a 'relative' */
+    width: 100%;
+    margin-top: 0; /* Ajuste para la alineación vertical */
+}
+
+
+#registro .form-group .text-required .text-danger {
+    font-size: 0.8rem; /* Ajustar según la necesidad */
+    color: #ff6b6b; /* Ejemplo de color para el mensaje de error */
+}
+
+
 #registro button:hover {
     background-color: #0f4c75;
-    color:#bbe1fa;
+    color:#8fd8ff;
 }
 
 .pie-form {
@@ -105,7 +155,7 @@ body {
 .pie-form a {
     display: block;
     text-decoration: none;
-    color: #bbe1fa;
+    color:#8fd8ff;
     margin-bottom: 3px;
 }
 
@@ -122,7 +172,7 @@ body {
 .inferior a {
     display: block;
     text-decoration: none;
-    color: #bbe1fa;
+    color:#8fd8ff;
     margin-bottom: 3px;
 }
 

@@ -11,6 +11,7 @@ import { SlidebarComponent } from './slidebar/slidebar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderLoggedComponent } from './header-logged/header-logged.component';
+import { SesiontimeoutComponent } from './sesiontimeout/sesiontimeout.component';
 
 
 
@@ -25,6 +26,9 @@ import { HeaderLoggedComponent } from './header-logged/header-logged.component';
     SlidebarComponent,
     LoginComponent,
     RegisterComponent,
+    SesiontimeoutComponent
+    
+    
   ],
   exports:[
     HeaderComponent,
@@ -35,12 +39,15 @@ import { HeaderLoggedComponent } from './header-logged/header-logged.component';
     FooterComponent,
     SlidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SesiontimeoutComponent
+    
   ],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
+    
   ]
 })
 export class ComponentsModule { }

@@ -5,16 +5,43 @@
                 Registrarse
             </div>
             <form class="full-form needs-validation" novalidate #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-              <input type="text" class="form-control" name="usuario" id="usuario" #usuario="ngModel" [(ngModel)]="user.nombreUsuario" placeholder="Nombre de usuario" required>
-              <input type="email" class="form-control" name="email" id="email" #correo="ngModel" [(ngModel)]="user.correo"  placeholder="Correo electrónico" required>
-              <input type="password" class="form-control" name="password" id="password" #contrasena="ngModel" [(ngModel)]="user.contrasena"  placeholder="Contraseña" required>
-              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" #confirmarContrasena="ngModel" [(ngModel)]="user.confirmarContrasena" placeholder="Confirmar Contraseña" required>
-              <button type="submit" title="Registrar" [disabled]="userForm.invalid">Registrarse</button>
+              <div class="form-group">
+                  <input type="text" class="form-control" name="usuario" id="usuario" #usuario="ngModel" [(ngModel)]="user.nombreUsuario" placeholder="Nombre de usuario" required>
+                  <div class="text-required" *ngIf="usuario.touched && usuario.errors?.['required']">
+                      <small class="text-danger"><b>*Campo obligatorio</b></small>
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" #correo="ngModel" [(ngModel)]="user.correo"  placeholder="Correo electrónico" required pattern=".+@(gmail|outlook|hotmail)\.com" >
+                  <div class="text-required" *ngIf="correo.touched && correo.errors">
+                      <small class="text-danger" *ngIf="correo.errors['required']"><b>*Campo obligatorio</b></small>
+                      <small class="text-danger" *ngIf="correo.errors['pattern']"><b>*Debe ser una dirección de correo válida</b></small>
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control" name="password" id="password" #contrasena="ngModel" [(ngModel)]="user.contrasena" placeholder="Contraseña" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}">
+                <button type="button" class="view" (click)="toggleVisibility()"><i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i></button>
+                <div class="text-required" *ngIf="contrasena.touched && contrasena.errors">
+                    <small class="text-danger" *ngIf="contrasena.errors['required']"><b>*Campo obligatorio</b></small>
+                    <small class="text-danger" *ngIf="contrasena.errors['pattern']"><b>*Debes ingresar al menos 8 caracteres incluyendo minúsculas, mayúsculas, números y símbolos.</b></small>
+                </div>
+            </div>
+              
+              <div class="form-group">
+                  <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control" name="confirmPassword" id="password" #confirmarContrasena="ngModel" [(ngModel)]="user.confirmarContrasena" placeholder="Confirmar Contraseña" required>
+                  <button type="button" class="view" (click)="toggleConfirmPasswordVisibility()"><i [class]="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i></button>
+                  <div class="text-required" *ngIf="confirmarContrasena.touched && confirmarContrasena.errors?.['required']">
+                      <small class="text-danger"><b>*Campo obligatorio</b></small>
+                  </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" title="Registrar" [disabled]="userForm.invalid">Registrarse</button>
           </form>
             <div class="pie-form">
                 <a href="../login/login.component.html">¿Ya tienes cuenta? Inicia sesión</a>
             </div>
         </div>
     </div>
-  </div>
-  
+</div>

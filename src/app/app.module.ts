@@ -13,6 +13,7 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SesiontimeoutComponent } from './components/sesiontimeout/sesiontimeout.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule, MatDialogModule, 
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [{ provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -1,22 +1,38 @@
 <div id="contenedor">
-    <div id="central">
-      <div id="login">
-        <div class="titulo">
-          Bienvenido
-        </div>
-        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
-          <input type="text" name="usuario" #nombre_usuario="ngModel" [(ngModel)]="loginData.nombre_usuario" placeholder="Usuario" required>
-          <input type="password" name="password" #contrasena_usuario="ngModel" [(ngModel)]="loginData.contrasena_usuario" placeholder="Contraseña" required>
-          <button type="submit" title="Ingresar">Login</button>
-        </form>
-        <div class="pie-form">
-          <a href="#">¿Perdiste tu contraseña?</a>
-          <a href="#">¿No tienes Cuenta? Registrate</a>
-        </div>
+  <div id="central">
+    <div id="login">
+      <div class="titulo">
+        Bienvenido
       </div>
-      <div class="inferior">
-        <a href="#">Volver</a>
+      <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+        <!-- Input para usuario con validación -->
+        <input type="text" class="form-control" name="usuario" #nombre_usuario="ngModel" [(ngModel)]="loginData.nombre_usuario" placeholder="Usuario" required>
+        <div class="text-required" *ngIf="nombre_usuario.touched && nombre_usuario.errors?.['required']">
+          <small class="text-danger"><b>*Campo obligatorio</b></small>
+        </div>
+
+        <!-- Input para contraseña con ícono de ojo para previsualizar -->
+        <div class="input-group mb-3">
+          <input [type]="showPassword ? 'text' : 'password'" class="form-control" name="password" id="password" #contrasena_usuario="ngModel" [(ngModel)]="loginData.contrasena_usuario" placeholder="Contraseña" required>
+          
+            <button class="btn btn-outline-secondary" id="view" type="button" (click)="showPassword = !showPassword">
+              <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          
+        </div>
+        <div class="text-required" *ngIf="contrasena_usuario.touched && contrasena_usuario.errors?.['required']">
+          <small class="text-danger"><b>*Campo obligatorio</b></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary" title="Ingresar" [disabled]="loginForm.invalid">Login</button>
+      </form>
+      <div class="pie-form">
+        <a href="#">¿Perdiste tu contraseña?</a>
+        <a href="#">¿No tienes Cuenta? Registrate</a>
       </div>
     </div>
+    <div class="inferior">
+      <a href="#">Volver</a>
+    </div>
   </div>
-  
+</div>

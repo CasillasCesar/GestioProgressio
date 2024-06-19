@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forms-proyectos',
@@ -15,7 +16,7 @@ export class FormsProyectosPage implements OnInit {
 
 
 
-  constructor(private dataService : DataService, private router : Router) { 
+  constructor(private dataService : DataService, private router : Router, private authService: AuthService) { 
     this.project = {
       nombre: '',
       responsable: '',
@@ -28,7 +29,9 @@ export class FormsProyectosPage implements OnInit {
 
 
   ngOnInit() {
-
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);  // Redirige a login si no está autenticado
+    }
   }
 
   onSubmit(form: NgForm) {

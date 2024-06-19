@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Breadcrumbs } from 'src/app/interfaces/breadcrumbs';
 
@@ -7,13 +7,13 @@ import { Breadcrumbs } from 'src/app/interfaces/breadcrumbs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent  implements OnInit {
+export class HeaderComponent   {
 
   constructor(private router : Router) { }
   selected : string = '';
   breadcrumbs : Array<Breadcrumbs> = [{label:"Inicio",path:"/inicio"}];
 
-  ngOnInit() {}
+  
 
   move(url:string, label ?: string, index ?: number){
     if(index==this.breadcrumbs.length-1){
