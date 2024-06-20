@@ -10,6 +10,7 @@ import { SesiontimeoutComponent } from '../components/sesiontimeout/sesiontimeou
 export class AuthService {
   apiUrl = 'http://localhost:3000'; // Si se desea volver a usar solo tengo que cambiar la URL
   public sessionTimeoutWarning = new EventEmitter<void>();
+  public sessionChange = new EventEmitter<boolean>();
   
   
   constructor(private http: HttpClient, private router: Router) { }
@@ -29,6 +30,7 @@ export class AuthService {
         localStorage.setItem('token', response.token);
         this.startTokenTimer();
         this.setupActivityListener();  // Configurar listeners de actividad después del inicio de sesión
+        this.sessionChange.emit(true);
       });
   }
 
@@ -99,6 +101,7 @@ export class AuthService {
 
 logout(redirect: boolean = true): void {
     localStorage.removeItem('token');
+    this.sessionChange.emit(false);
     if (this.tokenTimer) {
       clearTimeout(this.tokenTimer);
     }

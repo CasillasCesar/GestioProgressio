@@ -17,8 +17,13 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
+  isLoged = false;
   ngOnInit(): void {
     this.authService.setupActivityListener();
+    this.authService.sessionChange.subscribe((value)=>{
+      this.isLoged = value;
+    })
   }
+  
   
 }
