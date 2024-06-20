@@ -1,3 +1,5 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
@@ -27,5 +29,31 @@
 
 
 /* Global CSS styles */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Define el contenedor del efecto ripple */
+.ripple-container {
+    position: relative;
+    overflow: hidden; /* Necesario para que el efecto ripple no se desborde */
+    display: inline-block; /* O cualquier otra regla de display según tus necesidades */
+  }
+  
+  /* Define el efecto ripple */
+  .ripple-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.3); /* Color del ripple */
+    border-radius: 90%;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+  }
+  
+  /* Activa el efecto ripple al hacer clic */
+  .ripple-container:active::after {
+    width: 150%;
+    height: 150%;
+  }
+  
 
