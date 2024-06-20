@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   isLoged = false;
   ngOnInit(): void {
+    this.isLoged = this.authService.isAuthenticated();
     this.authService.setupActivityListener();
     this.authService.sessionChange.subscribe((value)=>{
       this.isLoged = value;
