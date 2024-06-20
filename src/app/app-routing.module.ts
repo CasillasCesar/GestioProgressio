@@ -9,21 +9,24 @@ import { LoginComponent } from './components/login/login.component';
 import { registerLocaleData } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { SesiontimeoutComponent } from './components/sesiontimeout/sesiontimeout.component';
+import { AuthGuard } from './guards/auth.guard';
 //import { NonAuthGuard } from './guards/nonauthguard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'project-catalog',
-    loadChildren: () => import('./pages/project-catalog/project-catalog.module').then( m => m.ProjectCatalogPageModule)
+    loadChildren: () => import('./pages/project-catalog/project-catalog.module').then( m => m.ProjectCatalogPageModule),
+    canActivate : [AuthGuard]
   },
 /*   {
     path: 'project-catalog/',
@@ -31,7 +34,8 @@ const routes: Routes = [
   }, */
   {
     path: 'add-activity',
-    loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule)
+    loadChildren: () => import('./pages/add-activity/add-activity.module').then( m => m.AddActivityPageModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'inicio',
@@ -49,7 +53,8 @@ const routes: Routes = [
   },
   {
     path: 'forms-proyectos',
-    loadChildren: () => import('./pages/forms-proyectos/forms-proyectos.module').then( m => m.FormsProyectosPageModule)
+    loadChildren: () => import('./pages/forms-proyectos/forms-proyectos.module').then( m => m.FormsProyectosPageModule),
+    canActivate : [AuthGuard]
   },
   {
     path: 'test',
